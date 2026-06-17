@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Views Taxonomy Branch module.
+ *
+ * Provides a Views argument handler that limits a taxonomy term view
+ * to a single branch: the root term and all of its descendants.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function views_taxonomy_branch_views_data_alter(array &$data) {
+  // Register our argument plugin against the tid field on the taxonomy
+  // term base table so it appears in the contextual filters picker.
+  $data['taxonomy_term_field_data']['tid']['argument']['id'] = 'taxonomy_branch_tid';
+  // This adds it as an *additional* option alongside the default tid argument.
+  // To add it without overwriting the default, register it on a virtual field:
+  $data['taxonomy_term_field_data']['taxonomy_branch_tid'] = [
+    'title'  => t('Taxonomy Branch (tid)'),
+    'help'   => t('Filter to a branch of the taxonomy hierarchy: the root term and all of its descendants.'),
+    'argument' => [
+      'id'    => 'taxonomy_branch_tid',
+      'field' => 'tid',
+      'table' => 'taxonomy_term_field_data',
+    ],
+  ];
+}

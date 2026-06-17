@@ -1,0 +1,8 @@
+name: 'Views Taxonomy Branch'
+type: module
+description: 'Provides a Views argument handler that filters a taxonomy term view to a branch (root term + all descendants).'
+core_version_requirement: ^10 || ^11
+package: Views
+dependencies:
+  - drupal:views
+  - drupal:taxonomy
