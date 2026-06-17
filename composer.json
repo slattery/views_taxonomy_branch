@@ -1,0 +1,14 @@
+{
+  "name": "slattery/views_taxonomy_branch",
+  "type": "drupal-custom-module",
+  "description": "get tax branch children from term",
+  "require": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+  },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\views_taxonomy_branch\\": "src/"
+    }
+  }
+}
